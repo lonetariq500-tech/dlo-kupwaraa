@@ -419,7 +419,7 @@ async function saveProceedings() {
   btn.disabled = true; btn.textContent = 'Saving...';
 
   const resp = await api('updateProceedings', {
-    caseNo: CURRENT_CASE_FOR_UPDATE.caseNo,
+    caseNo: CURRENT_CASE_FOR_UPDATE.caseID,
     proceedings, nextHearingDate: nextHearing
   });
 
@@ -439,7 +439,7 @@ async function saveProceedings() {
   closeModal();
   showToast('Proceedings Updated Successfully.');
   await loadCauseList(); // refresh cards + statuses without a page reload
-  showPostSaveOptions(CURRENT_CASE_FOR_UPDATE ? CURRENT_CASE_FOR_UPDATE.caseNo : null);
+  showPostSaveOptions(CURRENT_CASE_FOR_UPDATE ? CURRENT_CASE_FOR_UPDATE.caseId : null);
 }
 
 function showPostSaveOptions() {
